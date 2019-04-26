@@ -48,18 +48,18 @@ public class Main {
         ArrayList<String> Cheesechoice = new ArrayList<String>();
 
         Cheesechoice.add("Cheese");
-        Cheesechoice.add("no");
+        Cheesechoice.add("no Cheese");
 
 
         ArrayList<String> Guacchoice = new ArrayList<String>();
         Guacchoice.add("Guac");
-        Guacchoice.add("no ");
+        Guacchoice.add("no Guac ");
         ArrayList<String> Quesochoice = new ArrayList<String>();
         Quesochoice.add("Queso");
-        Quesochoice.add("no ");
+        Quesochoice.add("no Queso ");
         ArrayList<String> SourCream = new ArrayList<String>();
         SourCream.add("sour cream");
-        SourCream.add("no ");
+        SourCream.add("no SourCream ");
 
 
 
@@ -77,32 +77,31 @@ public class Main {
             String veggies = randomItem(VeggiesCatalogue);
             String Cheese = randomItem(Cheesechoice);
 
-            if (Cheese.equalsIgnoreCase("no")){
-                Cheese = "";
-            }
             String Guac = randomItem(Guacchoice);
-            if (Guac.equalsIgnoreCase("yes")){
-                Guac = "";
-            }
+
             String Queso = randomItem(Quesochoice);
-            if (Queso.equalsIgnoreCase("yes")){
-                Queso = "Queso";
-            }
+
             String cream = randomItem(SourCream);
 
-            if (cream.equalsIgnoreCase("yes")){
-                cream = "source cream";
+            if (rice.equalsIgnoreCase("none")){
+                rice = "no rice";
             }
+
+            if (salsa.equalsIgnoreCase("none")){
+                salsa = "no salsa";
+            }
+
             String itemString = rice + ", " + meat + ", " + bean + ", " + salsa+ ", " +veggies+ ","+ Cheese +","+ Guac+ ","+ Queso+","+cream;
             String itemArray[] = itemString.split(", ");
+            String newitemString = itemString.replace(",no", "");
 
 
 
             for(int x = 0; x < itemArray.length; x++){
-                if(itemArray[x].equalsIgnoreCase("no rice")||itemArray[x].equalsIgnoreCase("no beans")){
+                if(itemArray[x].equalsIgnoreCase("none") || itemArray[x].equalsIgnoreCase("no") ){
                     nonCount++;
                 }
-                else if(itemArray[x].equalsIgnoreCase("mild salsa, medium salsa, hot salsa")|| itemArray[x].equalsIgnoreCase("veggies, lettuce, fagita veggies")){
+                else if(itemArray[x].equalsIgnoreCase("all")){
                     allCount++;
 
                 }
@@ -120,12 +119,15 @@ public class Main {
 
 
 
-                System.out.println("Burito " + i + ": " + rice + ", " + meat + ", " + bean + ", " + salsa + ", " + veggies+ ","+ Cheese
-                    +","+ Guac+ "," + Queso+","+ cream +": "+ totalCost );
+            System.out.println("Burito " + i + ": " + newitemString + ": "+ totalCost );
         }
 
 
     }
+
+
+
+
 
 
 
